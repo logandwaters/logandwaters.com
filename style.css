@@ -234,17 +234,32 @@ p {
 }
 
 .project {
+  border-bottom: 1px solid var(--border);
+}
+
+.project summary {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
   padding: 22px 8px;
-  border-bottom: 1px solid var(--border);
-  text-decoration: none;
+  cursor: pointer;
+  list-style: none;
   transition:
     background-color 160ms ease,
-    padding 160ms ease,
-    color 160ms ease;
+    padding 160ms ease;
+}
+
+.project summary::-webkit-details-marker {
+  display: none;
+}
+
+.project-summary {
+  min-width: 0;
+}
+
+.project h3 {
+  margin: 0;
 }
 
 .project p {
@@ -253,20 +268,62 @@ p {
   font-size: 0.91rem;
 }
 
-.project:hover {
+.project summary:hover {
   padding-right: 14px;
   padding-left: 14px;
   background: var(--surface);
+}
+
+.project summary:hover h3 {
   color: var(--blue-bright);
 }
 
-.project:hover p {
+.project summary:hover p {
   color: var(--muted);
 }
 
 .arrow {
+  flex: 0 0 auto;
   color: var(--muted);
   font-size: 1.15rem;
+  line-height: 1;
+  transition:
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.project summary:hover .arrow {
+  color: var(--blue-bright);
+}
+
+.project[open] .arrow {
+  transform: rotate(45deg);
+  color: var(--blue-bright);
+}
+
+/* Expanded project content */
+
+.project-details {
+  padding: 0 8px 22px;
+  max-width: 680px;
+}
+
+.project-details p {
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 0.91rem;
+  line-height: 1.6;
+}
+
+.project-details a {
+  display: inline-block;
+  color: var(--blue-bright);
+  font-size: 0.91rem;
+  text-decoration: none;
+}
+
+.project-details a:hover {
+  text-decoration: underline;
 }
 
 /* ------------------------------
