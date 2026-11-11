@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0e13">
+  <title>Logan Waters — Independent Developer</title>
+  <meta name="description" content="Logan Waters designs websites, develops software, and builds independent projects in Nova Scotia, Canada.">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0b0e13;
+      --surface: #11161f;
+      --surface-raised: #171e29;
+      --line: #273142;
+      --text: #eef2f8;
+      --muted: #9aa7ba;
+      --blue: #6ea0ff;
+      --blue-strong: #3978f6;
+      --blue-wash: rgba(74, 128, 255, .12);
+      --max: 1120px;
+      --radius: 16px;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 82% 0%, rgba(57,120,246,.10), transparent 34rem),
+        var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
+    .shell { width: min(var(--max), calc(100% - 48px)); margin-inline: auto; }
+    .site-header {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(11,14,19,.82); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(39,49,66,.78);
+    }
+    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; font-weight: 650; letter-spacing: -.025em; }
+    .brand-mark {
+      width: 36px; height: 36px; display: grid; place-items: center; border-radius: 10px;
+      background: linear-gradient(145deg, #4d8cff, #2254c8); color: white;
+      font-size: 12px; font-weight: 800; letter-spacing: -.06em;
+      box-shadow: 0 6px 22px rgba(57,120,246,.2);
+    }
+    .brand-name { display: block; line-height: 1.2; }
+    .brand-sub { display: block; color: var(--muted); font-size: 11px; font-weight: 500; margin-top: 3px; letter-spacing: .02em; }
+    .nav-links { display: flex; align-items: center; gap: 27px; color: var(--muted); font-size: 13px; }
+    .nav-links a { transition: color .18s ease; }
+    .nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--text); }
+    .nav-links .nav-cta { color: var(--text); border: 1px solid var(--line); border-radius: 9px; padding: 9px 13px; }
+    .menu-toggle { display: none; border: 1px solid var(--line); color: var(--text); background: var(--surface); border-radius: 9px; padding: 8px 10px; font: inherit; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; color: var(--blue); font: 600 11px/1.4 var(--mono); text-transform: uppercase; letter-spacing: .13em; }
+    .eyebrow::before { content: ""; width: 18px; height: 1px; background: currentColor; }
+    .hero { padding: 112px 0 80px; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(250px, .75fr); align-items: end; gap: 70px; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 780px; margin: 22px 0 22px; font-size: clamp(43px, 6.5vw, 76px); line-height: 1.02; letter-spacing: -.065em; font-weight: 650; }
+    h1 .accent { color: var(--blue); }
+    .hero-copy { max-width: 600px; color: var(--muted); font-size: 17px; line-height: 1.8; }
+    .hero-copy strong { color: var(--text); font-weight: 550; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .button { display: inline-flex; justify-content: center; align-items: center; gap: 10px; min-height: 45px; padding: 0 16px; border: 1px solid var(--line); border-radius: 10px; font-size: 13px; font-weight: 600; transition: transform .18s, border-color .18s, background .18s; }
+    .button:hover { transform: translateY(-2px); border-color: #53637b; }
+    .button-primary { background: var(--blue-strong); border-color: var(--blue-strong); color: white; }
+    .button-primary:hover { background: #4b88ff; border-color: #4b88ff; }
+    .button-arrow { color: currentColor; font-size: 17px; line-height: 1; }
+    .hero-aside { padding: 22px; background: linear-gradient(145deg, rgba(23,30,41,.9), rgba(17,22,31,.74)); border: 1px solid var(--line); border-radius: var(--radius); }
+    .aside-label { color: var(--muted); font: 11px var(--mono); text-transform: uppercase; letter-spacing: .1em; }
+    .focus-item { display: grid; grid-template-columns: 34px 1fr; gap: 12px; padding: 17px 0; border-bottom: 1px solid var(--line); }
+    .focus-item:last-child { border-bottom: 0; padding-bottom: 2px; }
+    .focus-icon { width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 9px; color: var(--blue); font-size: 16px; }
+    .focus-item h3 { font-size: 13px; margin: 1px 0 4px; font-weight: 600; }
+    .focus-item p { color: var(--muted); font-size: 12px; line-height: 1.55; margin: 0; }
+    .section { padding: 76px 0; border-top: 1px solid rgba(39,49,66,.7); }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 30px; }
+    .section-kicker { color: var(--muted); font: 11px var(--mono); text-transform: uppercase; letter-spacing: .12em; margin-bottom: 10px; }
+    h2 { font-size: clamp(28px, 3.8vw, 42px); line-height: 1.12; letter-spacing: -.045em; font-weight: 620; margin-bottom: 0; }
+    .section-intro { max-width: 410px; color: var(--muted); font-size: 14px; margin: 0; }
+    .path-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; }
+    .path-card { min-height: 260px; padding: 27px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); display: flex; flex-direction: column; transition: border-color .2s, transform .2s, background .2s; }
+    .path-card:hover { transform: translateY(-3px); border-color: #48628d; background: #131a25; }
+    .card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 31px; }
+    .card-icon { width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid #34445d; border-radius: 12px; color: var(--blue); background: var(--blue-wash); font-size: 19px; }
+    .card-index { color: #6c7a8f; font: 11px var(--mono); }
+    .path-card h3 { font-size: 21px; letter-spacing: -.03em; margin-bottom: 9px; font-weight: 600; }
+    .path-card p { color: var(--muted); font-size: 14px; max-width: 440px; margin-bottom: 23px; }
+    .text-link { display: inline-flex; align-items: center; gap: 8px; color: var(--blue); font-size: 13px; font-weight: 600; margin-top: auto; width: fit-content; }
+    .text-link span { transition: transform .18s; }
+    .text-link:hover span { transform: translate(3px,-2px); }
+    .project-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; }
+    .project-card { overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+    .project-art { min-height: 154px; padding: 18px; display: flex; align-items: center; justify-content: center; background: #101923; border-bottom: 1px solid var(--line); position: relative; overflow: hidden; }
+    .project-art::before { content: ""; position: absolute; inset: 0; opacity: .55; background-image: linear-gradient(rgba(110,160,255,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(110,160,255,.07) 1px, transparent 1px); background-size: 22px 22px; mask-image: linear-gradient(to bottom, black, transparent); }
+    .mock-window { position: relative; width: 84%; border: 1px solid #34445d; border-radius: 8px; overflow: hidden; background: #0c1118; box-shadow: 0 12px 35px rgba(0,0,0,.25); transform: rotate(-2deg); }
+    .window-bar { display: flex; gap: 4px; padding: 7px 9px; border-bottom: 1px solid #273142; }
+    .window-bar i { width: 5px; height: 5px; border-radius: 50%; background: #526178; }
+    .window-content { padding: 14px; }
+    .mock-line { height: 5px; width: 72%; background: #33445c; border-radius: 4px; margin-bottom: 7px; }
+    .mock-line.short { width: 42%; background: #4d8cff; }
+    .mock-panels { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-top: 13px; }
+    .mock-panels i { display: block; height: 29px; border: 1px solid #2d3c52; border-radius: 4px; background: #172333; }
+    .project-body { padding: 20px; }
+    .project-type { color: var(--blue); font: 10px var(--mono); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 9px; }
+    .project-body h3 { font-size: 17px; margin-bottom: 8px; letter-spacing: -.025em; }
+    .project-body p { color: var(--muted); font-size: 13px; line-height: 1.7; margin-bottom: 16px; }
+    .project-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; color: #78879c; font: 10px var(--mono); }
+    .about-strip { display: grid; grid-template-columns: .75fr 1.25fr; gap: 70px; align-items: start; }
+    .about-copy { color: var(--muted); font-size: 15px; line-height: 1.9; max-width: 650px; }
+    .about-copy strong { color: var(--text); font-weight: 550; }
+    .about-copy p:last-child { margin-bottom: 0; }
+    .principles { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 27px; }
+    .principle { padding: 15px; background: var(--surface); border: 1px solid var(--line); border-radius: 11px; }
+    .principle b { display: block; font-size: 12px; margin-bottom: 5px; }
+    .principle span { color: var(--muted); font-size: 11px; line-height: 1.55; display: block; }
+    .contact-band { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 31px; border: 1px solid #31466a; border-radius: var(--radius); background: linear-gradient(110deg, rgba(57,120,246,.13), rgba(17,22,31,.85) 65%); }
+    .contact-band h2 { font-size: clamp(25px,3vw,34px); margin-bottom: 9px; }
+    .contact-band p { color: var(--muted); font-size: 14px; margin: 0; }
+    .site-footer { padding: 28px 0; border-top: 1px solid var(--line); }
+    .footer-row { display: flex; justify-content: space-between; align-items: center; gap: 20px; color: var(--muted); font-size: 11px; }
+    .footer-links { display: flex; gap: 18px; }
+    .footer-links a:hover { color: var(--text); }
+    .mono { font-family: var(--mono); }
+    .hidden { display: none !important; }
+    .page-panel { min-height: 62vh; padding: 76px 0 90px; }
+    .page-panel .page-lead { max-width: 680px; color: var(--muted); font-size: 16px; line-height: 1.8; margin: 20px 0 35px; }
+    .page-panel h1 { font-size: clamp(40px,6vw,62px); margin-top: 17px; }
+    .detail-list { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; margin-top: 35px; }
+    .detail-box { padding: 22px; border: 1px solid var(--line); border-radius: 13px; background: var(--surface); }
+    .detail-box h3 { font-size: 15px; margin-bottom: 8px; }
+    .detail-box p { color: var(--muted); font-size: 13px; margin-bottom: 0; }
+    .route-note { color: var(--muted); font-size: 11px; margin-top: 30px; font-family: var(--mono); }
+    @media (max-width: 760px) {
+      .shell { width: min(100% - 32px, var(--max)); }
+      .nav { min-height: 68px; }
+      .menu-toggle { display: block; }
+      .nav-links { display: none; position: absolute; top: 67px; left: 0; right: 0; padding: 14px 20px 20px; background: #0e121a; border-bottom: 1px solid var(--line); flex-direction: column; align-items: stretch; gap: 0; }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 12px 4px; }
+      .nav-links .nav-cta { margin-top: 8px; text-align: center; }
+      .hero { padding: 76px 0 55px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 38px; }
+      .hero-aside { max-width: none; }
+      .section { padding: 57px 0; }
+      .section-head { display: block; }
+      .section-intro { margin-top: 14px; }
+      .path-grid, .project-grid { grid-template-columns: 1fr; }
+      .path-card { min-height: 225px; }
+      .project-grid { gap: 13px; }
+      .project-art { min-height: 175px; }
+      .about-strip { grid-template-columns: 1fr; gap: 24px; }
+      .principles { grid-template-columns: 1fr; }
+      .contact-band { align-items: flex-start; flex-direction: column; padding: 24px; }
+      .detail-list { grid-template-columns: 1fr; }
+      .footer-row { align-items: flex-start; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell nav">
+      <a class="brand" href="#home" data-route="home" aria-label="Logan Waters home">
+        <span class="brand-mark">LW</span>
+        <span><span class="brand-name">Logan Waters</span><span class="brand-sub">Independent developer</span></span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="#web-design" data-route="web-design">Web design</a>
+        <a href="#work" data-route="work">Work</a>
+        <a href="#about" data-route="about">About</a>
+        <a href="#contact" data-route="contact" class="nav-cta">Get in touch ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HOME: the personal/professional entrance, with two clear visitor paths -->
+    <section id="homePage" class="route-page">
+      <div class="shell hero">
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow">Independent developer · Nova Scotia, Canada</div>
+            <h1>I build things<br>for the <span class="accent">web.</span></h1>
+            <p class="hero-copy">I design websites, develop software, and work on independent projects. My focus is on making things that are <strong>useful, considered, and built to last.</strong></p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#web-design" data-route="web-design">Web design services <span class="button-arrow">↗</span></a>
+              <a class="button" href="#work" data-route="work">Explore my work <span class="button-arrow">→</span></a>
+            </div>
+          </div>
+          <aside class="hero-aside" aria-label="Current focus">
+            <div class="aside-label">A little about what I do</div>
+            <div class="focus-item">
+              <div class="focus-icon">⌘</div>
+              <div><h3>Web design & development</h3><p>Thoughtful, fast, maintainable websites for small businesses.</p></div>
+            </div>
+            <div class="focus-item">
+              <div class="focus-icon">⌁</div>
+              <div><h3>Independent software</h3><p>Building products, developer tools, and ideas of my own.</p></div>
+            </div>
+            <div class="focus-item">
+              <div class="focus-icon">⌂</div>
+              <div><h3>Systems & infrastructure</h3><p>Exploring the technology that keeps things running.</p></div>
+            </div>
+          </aside>
+        </div>
+      </div>
+
+      <section class="section" aria-labelledby="choose-heading">
+        <div class="shell">
+          <div class="section-head">
+            <div><div class="section-kicker">Start here / 01</div><h2 id="choose-heading">What brings you here?</h2></div>
+            <p class="section-intro">Whether you need a website or want to see what I'm building, there's a clear place to start.</p>
+          </div>
+          <div class="path-grid">
+            <a class="path-card" href="#web-design" data-route="web-design">
+              <div class="card-top"><span class="card-icon">↗</span><span class="card-index">01 — CLIENT WORK</span></div>
+              <h3>Websites for small businesses</h3>
+              <p>Clear, well-crafted websites that help your business look credible, communicate well, and work reliably.</p>
+              <span class="text-link">Explore web design <span>↗</span></span>
+            </a>
+            <a class="path-card" href="#work" data-route="work">
+              <div class="card-top"><span class="card-icon">⌘</span><span class="card-index">02 — INDEPENDENT WORK</span></div>
+              <h3>Projects, tools & experiments</h3>
+              <p>A look at the software I build, the systems I explore, and the ideas I'm working to make real.</p>
+              <span class="text-link">Explore selected work <span>→</span></span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="selected-work-heading">
+        <div class="shell">
+          <div class="section-head">
+            <div><div class="section-kicker">Selected work / 02</div><h2 id="selected-work-heading">A few things I've built.</h2></div>
+            <a class="text-link" href="#work" data-route="work">View all work <span>→</span></a>
+          </div>
+          <div class="project-grid">
+            <article class="project-card">
+              <div class="project-art" aria-hidden="true"><div class="mock-window"><div class="window-bar"><i></i><i></i><i></i></div><div class="window-content"><div class="mock-line short"></div><div class="mock-line"></div><div class="mock-panels"><i></i><i></i></div></div></div></div>
+              <div class="project-body"><div class="project-type">Open-source · Developer tools</div><h3>Toolgek</h3><p>A browser-based developer utility platform powered by self-describing JavaScript tool packages.</p><div class="project-foot"><span>INDEPENDENT PRODUCT</span><a href="#project-toolgek" data-route="project-toolgek">Details ↗</a></div></div>
+            </article>
+            <article class="project-card">
+              <div class="project-art" aria-hidden="true"><div class="mock-window"><div class="window-bar"><i></i><i></i><i></i></div><div class="window-content"><div class="mock-line short"></div><div class="mock-line"></div><div class="mock-line" style="width:58%"></div><div class="mock-panels"><i></i><i></i></div></div></div></div>
+              <div class="project-body"><div class="project-type">Client services</div><h3>Business websites</h3><p>Design and development work focused on clear messaging, considered details, and useful user journeys.</p><div class="project-foot"><span>CLIENT WORK</span><a href="#web-design" data-route="web-design">Services ↗</a></div></div>
+            </article>
+            <article class="project-card">
+              <div class="project-art" aria-hidden="true"><div class="mock-window"><div class="window-bar"><i></i><i></i><i></i></div><div class="window-content"><div class="mock-line"></div><div class="mock-line short"></div><div class="mock-panels"><i></i><i></i></div></div></div></div>
+              <div class="project-body"><div class="project-type">Technical exploration</div><h3>Systems & infrastructure</h3><p>Practical experiments with self-hosting, deployment, networking, and keeping services dependable.</p><div class="project-foot"><span>TECHNICAL PROJECTS</span><a href="#work" data-route="work">More projects →</a></div></div>
+            </article>
+          </div>
+          <p class="route-note">Portfolio cards are illustrative placeholders. Replace them with real work and verified project details before publishing.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="shell about-strip">
+          <div><div class="section-kicker">The person behind the work / 03</div><h2>Independent by design.</h2></div>
+          <div class="about-copy">
+            <p>I'm Logan, an independent developer with an interest in the full process of making things for the web — from the first design decisions to the code and systems that make a product work.</p>
+            <p>Alongside client projects, I build software of my own. That mix keeps my work practical: <strong>solve the immediate problem, understand the system, and keep the result simple enough to maintain.</strong></p>
+            <a class="text-link" href="#about" data-route="about">More about me <span>→</span></a>
+            <div class="principles">
+              <div class="principle"><b>Useful first</b><span>Function and clarity before decoration.</span></div>
+              <div class="principle"><b>Built thoughtfully</b><span>Good decisions matter beyond launch day.</span></div>
+              <div class="principle"><b>Keep it direct</b><span>Clear communication and no unnecessary complexity.</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="contactPreview">
+        <div class="shell">
+          <div class="contact-band">
+            <div><div class="section-kicker">Have a project in mind?</div><h2>Let's talk about what you need.</h2><p>If you're looking for a website, tell me a little about the business and the problem you're trying to solve.</p></div>
+            <a class="button button-primary" href="#contact" data-route="contact">Get in touch <span class="button-arrow">↗</span></a>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- WEB DESIGN: a commercially focused section under the same personal brand -->
+    <section id="webDesignPage" class="route-page hidden page-panel">
+      <div class="shell">
+        <div class="eyebrow">Client services / Web design</div>
+        <h1>Good websites.<br><span class="accent">Built with care.</span></h1>
+        <p class="page-lead">I work with small businesses to design and build clear, modern websites that communicate what they do, build trust, and give customers a straightforward next step.</p>
+        <div class="hero-actions"><a class="button button-primary" href="#contact" data-route="contact">Discuss a project <span class="button-arrow">↗</span></a><a class="button" href="#work" data-route="work">See selected work →</a></div>
+        <div class="section" style="margin-top:55px">
+          <div class="section-kicker">What I can help with</div><h2>A focused, practical service.</h2>
+          <div class="detail-list">
+            <article class="detail-box"><h3>Website design</h3><p>Page structure, visual direction, typography, responsive layouts, and a consistent experience across devices.</p></article>
+            <article class="detail-box"><h3>Website development</h3><p>Fast, accessible, maintainable websites built around the real needs of your business.</p></article>
+            <article class="detail-box"><h3>Content & structure</h3><p>Organize your services and information so visitors can quickly understand what you offer.</p></article>
+            <article class="detail-box"><h3>Launch & ongoing care</h3><p>Help with deployment and practical next steps. Ongoing support can be scoped to the project.</p></article>
+          </div>
+        </div>
+        <div class="section">
+          <div class="section-kicker">How it works</div><h2>A straightforward process.</h2>
+          <div class="detail-list">
+            <article class="detail-box"><h3>01 — Understand</h3><p>Discuss your business, audience, goals, current site, and what a successful outcome means.</p></article>
+            <article class="detail-box"><h3>02 — Plan & design</h3><p>Agree on the pages, content, and visual direction before moving into implementation.</p></article>
+            <article class="detail-box"><h3>03 — Build & refine</h3><p>Develop the site, review it together, and make focused adjustments.</p></article>
+            <article class="detail-box"><h3>04 — Launch</h3><p>Prepare the website for launch and make sure you understand the handover and next steps.</p></article>
+          </div>
+        </div>
+        <div class="contact-band"><div><div class="section-kicker">Start a conversation</div><h2>Tell me what you're looking to build.</h2><p>No complicated intake process. Start with the basics.</p></div><a class="button button-primary" href="#contact" data-route="contact">Project inquiry ↗</a></div>
+        <p class="route-note">Service descriptions are proposed positioning. Adjust scope, deliverables, and support promises to match what you actually offer.</p>
+      </div>
+    </section>
+
+    <!-- WORK: personal/professional portfolio, not a sales funnel -->
+    <section id="workPage" class="route-page hidden page-panel">
+      <div class="shell">
+        <div class="eyebrow">Projects / Selected work</div>
+        <h1>Things I've <span class="accent">worked on.</span></h1>
+        <p class="page-lead">A selection of independent products, client work, and technical explorations. Some are ongoing projects; others are experiments and lessons in building useful systems.</p>
+        <div class="project-grid">
+          <article class="project-card"><div class="project-art" aria-hidden="true"><div class="mock-window"><div class="window-bar"><i></i><i></i><i></i></div><div class="window-content"><div class="mock-line short"></div><div class="mock-line"></div><div class="mock-panels"><i></i><i></i></div></div></div></div><div class="project-body"><div class="project-type">Open-source · Product</div><h3>Toolgek</h3><p>A platform for browser-based developer utilities, backed by open-source, self-describing JavaScript tool packages.</p><div class="project-foot"><span>INDEPENDENT PRODUCT</span><a href="#project-toolgek" data-route="project-toolgek">Read case study ↗</a></div></div></article>
+          <article class="project-card"><div class="project-art" aria-hidden="true"><div class="mock-window"><div class="window-bar"><i></i><i></i><i></i></div><div class="window-content"><div class="mock-line short"></div><div class="mock-line"></div><div class="mock-panels"><i></i><i></i></div></div></div></div><div class="project-body"><div class="project-type">Client work</div><h3>Small business websites</h3><p>A place for selected client projects, showing the brief, design decisions, implementation, and result.</p><div class="project-foot"><span>CLIENT SERVICES</span><a href="#web-design" data-route="web-design">Service details ↗</a></div></div></article>
+          <article class="project-card"><div class="project-art" aria-hidden="true"><div class="mock-window"><div class="window-bar"><i></i><i></i><i></i></div><div class="window-content"><div class="mock-line"></div><div class="mock-line short"></div><div class="mock-panels"><i></i><i></i></div></div></div></div><div class="project-body"><div class="project-type">Systems</div><h3>Self-hosting & infrastructure</h3><p>Practical notes and project write-ups about running services, deployment, networking, and reliability.</p><div class="project-foot"><span>TECHNICAL EXPLORATION</span><span>ONGOING</span></div></div></article>
+        </div>
+        <div class="section" style="margin-top:58px">
+          <div class="section-kicker">How I approach projects</div><h2>Make the problem clear first.</h2>
+          <p class="page-lead">I like understanding how the parts fit together: the user experience, implementation, operational details, and the constraints around a project. The goal isn't complexity for its own sake; it's a result that works and can be maintained.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT: concise professional context -->
+    <section id="aboutPage" class="route-page hidden page-panel">
+      <div class="shell">
+        <div class="eyebrow">About / Logan Waters</div>
+        <h1>A builder with a <span class="accent">broad toolkit.</span></h1>
+        <p class="page-lead">I'm an independent developer based in Nova Scotia, Canada. My work spans website design and development, software projects, and the systems that support them.</p>
+        <div class="about-strip">
+          <div><div class="section-kicker">What I care about</div><h2>Useful work, done thoughtfully.</h2></div>
+          <div class="about-copy">
+            <p>I enjoy working across disciplines: shaping an idea, deciding how it should work, designing the experience, writing the code, and getting it running in the real world.</p>
+            <p>Client work gives that process a concrete purpose. Independent projects give me room to explore ideas, build tools, and learn through making. I see them as complementary rather than separate careers.</p>
+            <p>My approach is practical: keep communication clear, make deliberate technical choices, and avoid adding complexity unless it solves a real problem.</p>
+          </div>
+        </div>
+        <div class="section">
+          <div class="section-kicker">A few areas I work in</div>
+          <div class="detail-list">
+            <article class="detail-box"><h3>Design & experience</h3><p>Page structure, visual systems, typography, and user-focused interfaces.</p></article>
+            <article class="detail-box"><h3>Web development</h3><p>Frontend development, JavaScript, static sites, integrations, and deployment.</p></article>
+            <article class="detail-box"><h3>Independent products</h3><p>Product architecture, open-source packages, developer utilities, and experimentation.</p></article>
+            <article class="detail-box"><h3>Technical systems</h3><p>Self-hosting, infrastructure, automation, and the practical details around running software.</p></article>
+          </div>
+        </div>
+        <a class="text-link" href="#work" data-route="work">Explore my work <span>→</span></a>
+      </div>
+    </section>
+
+    <!-- CONTACT: one destination, with a useful commercial path -->
+    <section id="contactPage" class="route-page hidden page-panel">
+      <div class="shell">
+        <div class="eyebrow">Contact / Start a conversation</div>
+        <h1>What are you <span class="accent">working on?</span></h1>
+        <p class="page-lead">For website projects, independent work, or a useful conversation, send a short note with the context and what you'd like to figure out.</p>
+        <div class="detail-list">
+          <article class="detail-box"><div class="section-kicker">For potential clients</div><h3>Website project inquiry</h3><p>Include a little about your business, what you need, and any relevant timeline or existing website.</p><p style="margin-top:15px"><a class="text-link" href="mailto:me@logandwaters.com?subject=Website%20project%20inquiry">Email about a project ↗</a></p></article>
+          <article class="detail-box"><div class="section-kicker">For everything else</div><h3>General contact</h3><p>Questions about a project, collaboration, technical work, or something else.</p><p style="margin-top:15px"><a class="text-link" href="mailto:me@logandwaters.com">Send an email ↗</a></p></article>
+        </div>
+        <p class="route-note">Replace the example email address if needed. This prototype uses mailto links rather than a backend contact form.</p>
+      </div>
+    </section>
+
+    <!-- PROJECT DETAIL: demonstrates how an independent project can live on the personal site -->
+    <section id="projectToolgekPage" class="route-page hidden page-panel">
+      <div class="shell">
+        <div class="eyebrow">Project / Open-source developer tools</div>
+        <h1>Toolgek: <span class="accent">small tools,</span><br>clear purpose.</h1>
+        <p class="page-lead">Toolgek is an independent project exploring a straightforward way to define, run, present, and document browser-based developer utilities.</p>
+        <div class="detail-list">
+          <article class="detail-box"><h3>The idea</h3><p>Each tool is a self-describing JavaScript package that brings together its implementation, manifest, interface information, and documentation.</p></article>
+          <article class="detail-box"><h3>The approach</h3><p>Keep utilities focused, execute transformations in the browser where possible, and make the underlying packages inspectable and reusable.</p></article>
+          <article class="detail-box"><h3>My role</h3><p>Product direction, architecture, interface design, development, and the systems that connect the packages to the platform.</p></article>
+          <article class="detail-box"><h3>What I'm learning</h3><p>How to make a coherent developer experience from small utilities, and how to validate and grow an independent product.</p></article>
+        </div>
+        <div class="hero-actions" style="margin-top:30px"><a class="button button-primary" href="https://toolgek.com" target="_blank" rel="noreferrer">Visit Toolgek ↗</a><a class="button" href="#work" data-route="work">Back to work</a></div>
+        <p class="route-note">Project summary based on the current concept; add real screenshots, repository links, and measurable outcomes when ready.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <div>© <span id="year"></span> Logan Waters <span style="padding:0 7px;color:#4f5d72">/</span> Independent developer</div>
+      <div class="footer-links"><a href="#about" data-route="about">About</a><a href="#work" data-route="work">Work</a><a href="#contact" data-route="contact">Contact</a><a href="https://github.com/" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+    </div>
+  </footer>
+
+  <script>
+    // Tiny hash-based page switcher so this remains a single, self-contained HTML file.
+    // In a production site, these sections would normally become separate Astro pages/routes.
+    const routePages = {
+      home: "homePage",
+      "web-design": "webDesignPage",
+      work: "workPage",
+      about: "aboutPage",
+      contact: "contactPage",
+      "project-toolgek": "projectToolgekPage"
+    };
+    const titles = {
+      home: "Logan Waters — Independent Developer",
+      "web-design": "Web Design — Logan Waters",
+      work: "Selected Work — Logan Waters",
+      about: "About — Logan Waters",
+      contact: "Contact — Logan Waters",
+      "project-toolgek": "Toolgek — Logan Waters"
+    };
+    const navLinks = document.getElementById("navLinks");
+    const menuToggle = document.getElementById("menuToggle");
+
+    function currentRoute() {
+      const raw = window.location.hash.replace(/^#\/?/, "");
+      return routePages[raw] ? raw : "home";
+    }
+    function renderRoute() {
+      const route = currentRoute();
+      document.querySelectorAll(".route-page").forEach(page => page.classList.add("hidden"));
+      document.getElementById(routePages[route]).classList.remove("hidden");
+      document.title = titles[route] || titles.home;
+      document.querySelectorAll("[data-route]").forEach(link => {
+        if (link.closest(".nav-links")) {
+          if (link.dataset.route === route) link.setAttribute("aria-current", "page");
+          else link.removeAttribute("aria-current");
+        }
+      });
+      navLinks.classList.remove("open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+    }
+    document.addEventListener("click", event => {
+      const link = event.target.closest("[data-route]");
+      if (!link) return;
+      const route = link.dataset.route;
+      if (!routePages[route]) return;
+      if (currentRoute() === route && window.location.hash === "#" + route) {
+        event.preventDefault();
+        renderRoute();
+      }
+    });
+    window.addEventListener("hashchange", renderRoute);
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+    document.getElementById("year").textContent = new Date().getFullYear();
+    renderRoute();
+  </script>
+</body>
+</html>
