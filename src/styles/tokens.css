@@ -3,6 +3,7 @@
 
   --navy: #08111f;
   --white: #e8f0fb;
+  --creme: #f4f0ea;
   --grey-light: #8ea1b8;
   --grey-dark: #1c2d43;
   --copper: #d1793b;
@@ -20,7 +21,7 @@
 
   --font-family-title: "IBM Plex Sans", sans-serif;
   --font-family-body: "Raleway";
-  --font-family-meta: monospace;
+  --font-family-meta: "JetBrains Mono", monospace;
 
 /* Layout */
 
