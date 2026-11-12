@@ -12,11 +12,11 @@ concurrency:
 
 jobs:
   deploy:
-    name: Deploy release to VPS
+    name: Deploy to VPS
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout release
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Install rsync
@@ -35,12 +35,23 @@ jobs:
 
           chmod 644 ~/.ssh/known_hosts
 
+      - name: Test SSH connection
+        run: |
+          ssh \
+            -i ~/.ssh/deploy_key \
+            -p "${{ vars.VPS_PORT }}" \
+            "${{ vars.VPS_USER }}@${{ vars.VPS_HOST }}" \
+            "echo 'SSH connection successful'"
+
       - name: Deploy website
         run: |
           rsync -avz --delete \
-            --exclude=".gitignore/" \
+            --exclude=".gitignore" \
             --exclude=".github/" \
-            --exclude="README.md/" \
+            --exclude="README.md" \
             -e "ssh -i ~/.ssh/deploy_key -p ${{ vars.VPS_PORT }}" \
             ./ \
             "${{ vars.VPS_USER }}@${{ vars.VPS_HOST }}:${{ vars.VPS_TARGET }}"
+
+      - name: Deployment complete
+        run: echo "Website deployed successfully."
