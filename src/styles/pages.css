@@ -128,7 +128,7 @@ p {
 .project summary:hover {
   padding-right: 14px;
   padding-left: 14px;
-  background: var(--surface);
+  background: var(--background);
 }
 
 .project summary:hover h3 {
@@ -220,7 +220,7 @@ p {
 }
 
 .email-link:hover {
-  color: var(--text);
+  color: var(--title-text-color);
 }
 
 @media (max-width: 700px) {

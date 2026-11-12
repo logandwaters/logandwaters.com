@@ -1,3 +1,7 @@
+---
+import ThemeSwitcher from "./ThemeSwitcher.astro";
+---
+
 <header class="site-header">
   <img class="header-logo" src="/assets/brand/ldw-logo.svg" alt="">
 
@@ -16,6 +20,8 @@
       <a href="mailto:me@logandwaters.com" aria-label="Email" title="Send me an email">
         <img class="icon" src="/assets/icons/paper-plane-tilt.svg" alt="">
       </a>
+
+      <ThemeSwitcher />
     </div>
   </div>
 </header>
@@ -40,7 +46,7 @@
   }
 
   .site-name {
-    color: var(--text);
+    color: var(--title-text-color);
     font-weight: 700;
     text-decoration: none;
     letter-spacing: -0.02em;
@@ -58,7 +64,7 @@
   }
 
   nav a {
-    color: var(--muted);
+    color: var(--body-text-color);
     font-size: 0.88rem;
     text-decoration: none;
   }
@@ -77,7 +83,7 @@
 
   .social-links a {
     display: flex;
-    color: var(--muted);
+    color: var(--body-text-color);
     transition: color var(--transition-fast), transform var(--transition-fast);
   }
 
