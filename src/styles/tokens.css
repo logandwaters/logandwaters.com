@@ -1,0 +1,37 @@
+:root {
+/* Primitives */
+
+  --navy: #08111f;
+  --white: #e8f0fb;
+  --grey-light: #8ea1b8;
+  --grey-dark: #1c2d43;
+  --copper: #d1793b;
+  --blue: #3b9cff;
+  --blue-bright: #60b5ff;
+
+/* Default Dark Theme */
+
+  --background: var(--navy);
+  --title-text-color: var(--white);
+  --body-text-color: var(--muted);
+  --primary-color: var(--copper);
+
+/* Font and Text */
+
+  --font-family-title: "IBM Plex Sans", sans-serif;
+  --font-family-body: "Raleway";
+  --font-family-meta: monospace;
+
+/* Layout */
+
+  --max-width: 920px;
+}
+
+/* Accessible Light Theme */
+
+[data-theme="light"] {
+  --background: var(--white);
+  --title-text-color: var(--navy);
+  --body-text-color: var(--grey-dark);
+  --primary-color: var(--blue);
+}
