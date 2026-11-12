@@ -14,18 +14,19 @@
 
   --background: var(--navy);
   --title-text-color: var(--white);
-  --body-text-color: var(--muted);
+  --body-text-color: var(--grey-light);
   --primary-color: var(--copper);
+  --border-color: var(--grey-dark);
 
-/* Font and Text */
-
+  /* Typography */
   --font-family-title: "IBM Plex Sans", sans-serif;
   --font-family-body: "Raleway";
   --font-family-meta: "JetBrains Mono", monospace;
 
-/* Layout */
-
+  /* Layout and motion */
   --max-width: 920px;
+  --line-height-body: 1.7;
+  --transition-fast: 160ms ease;
 }
 
 /* Accessible Light Theme */
@@ -35,4 +36,5 @@
   --title-text-color: var(--navy);
   --body-text-color: var(--grey-dark);
   --primary-color: var(--blue);
+  --border-color: var(--grey-light);
 }

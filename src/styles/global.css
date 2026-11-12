@@ -1,11 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
-@import "/src/tokens.css";
-
-/* ------------------------------
-   Base
-   ------------------------------ */
+@import "./tokens.css";
 
 * {
   box-sizing: border-box;
@@ -21,17 +17,9 @@ body {
   min-height: 100vh;
   margin: 0;
   background: var(--background);
-  color: var(--text);
-  font-family:
-    "Raleway",
-    'IBM Plex Sans',
-    ui-sans-serif,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
-  line-height: 1.7;
+  color: var(--body-text-color);
+  font-family: var(--font-family-body);
+  line-height: var(--line-height-body);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -43,4 +31,9 @@ a {
   flex: 1 0 auto;
   width: min(calc(100% - 40px), var(--max-width));
   margin: 0 auto;
+}
+
+.icon {
+  height: 20px;
+  width: auto;
 }
