@@ -1,5 +1,6 @@
 ---
 import "../style.css";
+import Silhouette from "../components/Silhouette.astro";
 ---
 
 <!doctype html>
@@ -38,9 +39,7 @@ import "../style.css";
 
     <section class="intro" aria-labelledby="intro-title">
       <div class="intro-copy">
-        <figure class="intro-art">
-          <iframe src="/assets/art/silhouette-ascii-art.html" title="ASCII art portrait of Logan"></iframe>
-        </figure>
+        <Silhouette />
         <p class="eyebrow">Hello.</p>
         <h1 id="intro-title">I'm Logan.</h1>
         <p class="lead">
