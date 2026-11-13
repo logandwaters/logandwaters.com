@@ -81,12 +81,12 @@ p {
   margin: 0;
 }
 
-.currently {
+.list {
   display: grid;
   gap: 27px;
 }
 
-.currently p,
+.list p,
 .body-copy {
   max-width: 720px;
   margin-top: 5px;
