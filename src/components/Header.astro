@@ -1,39 +1,51 @@
 ---
 import ThemeSwitcher from "./ThemeSwitcher.astro";
+import Navigation from "./Navigation.astro";
 ---
 
 <header class="site-header">
-  <img class="header-logo" src="/assets/brand/ldw-logo.svg" alt="">
+  <a href="/" aria-label="Home">
+    <span class="header-logo header-logo--ldw" aria-hidden="true"></span>
+  </a>
 
   <div class="header-right">
-    <nav aria-label="Main navigation">
-      <a href="#projects">Projects</a>
-      <a href="#notes">Notes</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <Navigation />
 
-    <div class="social-links" aria-label="Social links">
+    <div class="icon-links" aria-label="Social links">
+      <ThemeSwitcher />
+    </div>
+
+    <div class="icon-links" aria-label="Social links">
       <a href="https://github.com/logandwaters" aria-label="GitHub" title="Visit my GitHub">
-        <img class="icon" src="/assets/icons/github-logo.svg" alt="">
+        <span class="social-icon social-icon--github" aria-hidden="true"></span>
       </a>
 
       <a href="mailto:me@logandwaters.com" aria-label="Email" title="Send me an email">
-        <img class="icon" src="/assets/icons/paper-plane-tilt.svg" alt="">
+        <span class="social-icon social-icon--email" aria-hidden="true"></span>
       </a>
-
-      <ThemeSwitcher />
     </div>
   </div>
 </header>
 
 <style>
+
   .header-logo {
+    display: block;
     height: 18px;
-    width: auto;
+    width: 48.5px;
+    background-color: var(--primary-color);
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: contain;
+  }
+
+  .header-logo--ldw {
+    mask-image: url("/assets/brand/ldw-logo.svg");
   }
 
   .site-header {
     position: relative;
+    z-index: 1;
     left: 50%;
     display: flex;
     align-items: center;
@@ -58,22 +70,7 @@ import ThemeSwitcher from "./ThemeSwitcher.astro";
     gap: 24px;
   }
 
-  nav {
-    display: flex;
-    gap: 20px;
-  }
-
-  nav a {
-    color: var(--body-text-color);
-    font-size: 0.88rem;
-    text-decoration: none;
-  }
-
-  nav a:hover {
-    color: var(--blue-bright);
-  }
-
-  .social-links {
+  .icon-links {
     display: flex;
     align-items: center;
     gap: 13px;
@@ -81,40 +78,33 @@ import ThemeSwitcher from "./ThemeSwitcher.astro";
     border-left: 1px solid var(--border-color);
   }
 
-  .social-links a {
+  .icon-links a {
     display: flex;
     color: var(--body-text-color);
     transition: color var(--transition-fast), transform var(--transition-fast);
   }
 
-  .social-links a:hover {
-    color: var(--blue-bright);
+  .icon-links a:hover {
+    color: var(--body-text-color-hover);
     transform: translateY(-1px);
   }
 
-  .social-links svg {
-    width: 17px;
-    height: 17px;
-    fill: currentColor;
+  .social-icon {
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-color: currentColor;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: contain;
   }
 
-  @media (max-width: 700px) {
-    .site-header {
-      align-items: flex-start;
-    }
+  .social-icon--github {
+    mask-image: url("/assets/icons/github-logo.svg");
+  }
 
-    .header-right {
-      gap: 15px;
-    }
-
-    nav {
-      display: none;
-    }
-
-    .social-links {
-      padding-left: 0;
-      border-left: 0;
-    }
+  .social-icon--email {
+    mask-image: url("/assets/icons/paper-plane-tilt.svg");
   }
 
   @media (max-width: 430px) {

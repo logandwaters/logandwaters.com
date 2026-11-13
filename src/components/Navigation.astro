@@ -1,0 +1,148 @@
+<nav aria-label="Main navigation" data-navigation>
+  <button
+    class="menu-toggle"
+    type="button"
+    aria-label="Open menu"
+    aria-expanded="false"
+    aria-controls="navigation-links"
+    data-menu-toggle
+  >
+    <span class="menu-icon" aria-hidden="true"></span>
+  </button>
+
+  <div class="navigation-links" id="navigation-links" hidden>
+    <a href="/#currently">Currently</a>
+    <a href="/#projects">Projects</a>
+    <a href="/#about-me">About Me</a>
+    <a href="/#tech-stack">Tech Stack</a>
+    <a href="/#contact">Contact Me</a>
+  </div>
+</nav>
+
+<style>
+  .menu-toggle {
+    display: none;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--body-text-color);
+    cursor: pointer;
+    transition: color var(--transition-fast), transform var(--transition-fast);
+  }
+
+  .menu-toggle:hover {
+    color: var(--body-text-color-hover);
+    transform: translateY(-1px);
+  }
+
+  .menu-toggle:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 4px;
+  }
+
+  .menu-icon {
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-color: currentColor;
+    mask: url("/assets/icons/list.svg") center / contain no-repeat;
+  }
+
+  .menu-toggle[aria-expanded="true"] .menu-icon {
+    mask-image: url("/assets/icons/x.svg");
+  }
+
+  .navigation-links {
+    display: flex;
+    gap: 20px;
+  }
+
+  .navigation-links a {
+    color: var(--body-text-color);
+    font-size: 0.88rem;
+    text-decoration: none;
+  }
+
+  .navigation-links a:hover {
+    color: var(--body-text-color-hover);
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 700px) {
+    .menu-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 1lh;
+      font-size: 0.88rem;
+      line-height: var(--line-height-body);
+    }
+
+    .navigation-links {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      width: min(280px, calc(100vw - 40px));
+      padding: 8px 20px;
+      border: 1px solid var(--border-color);
+      background: var(--background);
+    }
+
+    .navigation-links[hidden] {
+      display: none;
+    }
+
+    .navigation-links a {
+      padding: 12px 0;
+    }
+
+    .navigation-links a + a {
+      border-top: 1px solid var(--border-color);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .menu-toggle {
+      transition: none;
+    }
+  }
+</style>
+
+<script is:inline>
+  {
+    const navigation = document.querySelector("[data-navigation]");
+    const toggle = navigation.querySelector("[data-menu-toggle]");
+    const links = navigation.querySelector(".navigation-links");
+    const mobile = window.matchMedia("(max-width: 700px)");
+
+    const setMenuOpen = (open) => {
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      links.hidden = !open;
+    };
+
+    toggle.addEventListener("click", () => {
+      setMenuOpen(toggle.getAttribute("aria-expanded") !== "true");
+    });
+
+    links.addEventListener("click", (event) => {
+      if (event.target.closest("a")) setMenuOpen(false);
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!navigation.contains(event.target)) setMenuOpen(false);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
+        setMenuOpen(false);
+        toggle.focus();
+      }
+    });
+
+    mobile.addEventListener("change", () => setMenuOpen(false));
+  }
+</script>

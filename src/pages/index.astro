@@ -35,7 +35,7 @@ import Footer from "../components/Footer.astro";
       </div>
     </section>
 
-    <section class="section" aria-labelledby="currently-title">
+    <section class="section" id="currently" aria-labelledby="currently-title">
       <div class="section-heading">
         <img class="icon" src="/assets/icons/hourglass-simple.svg" alt="">
         <h2 id="currently-title">Currently</h2>
@@ -130,7 +130,7 @@ import Footer from "../components/Footer.astro";
       </div>
     </section>
 
-    <section class="section" aria-labelledby="experience-title">
+    <section class="section" id="about-me" aria-labelledby="experience-title">
       <div class="section-heading">
         <span class="section-number">?</span>
         <h2 id="experience-title">How I got here</h2>
@@ -150,7 +150,7 @@ import Footer from "../components/Footer.astro";
       </p>
     </section>
 
-    <section class="section" aria-labelledby="stack-title">
+    <section class="section" id="tech-stack" aria-labelledby="stack-title">
       <div class="section-heading">
         <span class="section-number">{}</span>
         <h2 id="stack-title">What I'm learning & using</h2>
@@ -210,6 +210,33 @@ import Footer from "../components/Footer.astro";
       <p class="body-copy">
         You can also learn more about my projects at <a href="https://github.com/logandwaters" target="_blank" rel="noopener noreferrer">GitHub</a>.
       </p>
+    </section>
+
+    <section class="section" aria-labelledby="">
+      <div class="section-heading">
+        <img class="icon" src="/assets/icons/paper-plane-tilt.svg" alt="">
+        <h2 id="contact-title">Contact</h2>
+      </div>
+
+      <div class="currently">
+        <p class="body-copy">
+          If you want to talk about a project, something I've built, or just say hello, my inbox is open.
+        </p>
+        <div>
+          <h3>Email</h3>
+          <p>Send me an email at <a class="email-link" href="mailto:me@logandwaters.com">me@logandwaters.com</a> anytime.</p>
+        </div>
+
+        <div>
+          <h3>Github</h3>
+          <p>Turning Toolgek into a proper platform and continuing to experiment with homelab services.</p>
+        </div>
+
+        <div>
+          <h3>Social</h3>
+          <p>Figuring out how web development, design, infrastructure, and software could fit into a career.</p>
+        </div>
+      </div>
     </section>
 
   </main>
