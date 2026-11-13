@@ -51,38 +51,19 @@
 
 <style>
   .intro-art {
-    float: right;
     display: grid;
     place-items: center;
-    width: 46%;
-    height: 375px;
+    width: 100%;
     margin: 0;
     container-type: inline-size;
-    color: var(--copper);
-    shape-outside: polygon(
-      43% 0,
-      61% 0,
-      70% 7%,
-      76% 20%,
-      77% 40%,
-      73% 52%,
-      66% 60%,
-      100% 72%,
-      100% 100%,
-      0 100%,
-      0 83%,
-      18% 75%,
-      33% 68%,
-      39% 61%,
-      31% 54%,
-      25% 44%,
-      25% 22%,
-      31% 8%
-    );
-    shape-margin: 12px;
+    color: var(--primary-color);
+    grid-column: 2;
+    grid-row: 1;
+    min-height: 0;
   }
 
   .ascii-portrait {
+    place-self: end;
     margin: 0;
     padding: 0;
     color: inherit;
@@ -92,9 +73,8 @@
     white-space: pre;
   }
 
-  @media (max-width: 820px) {
+  @media (max-width: 767px) {
     .intro-art {
-      float: none;
       width: min(100%, 300px);
       height: auto;
       aspect-ratio: 1;
