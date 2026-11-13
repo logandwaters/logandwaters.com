@@ -15,6 +15,7 @@
   --background: var(--navy);
   --title-text-color: var(--white);
   --body-text-color: var(--grey-light);
+  --body-text-color-hover: var(--blue-bright);
   --primary-color: var(--copper);
   --border-color: var(--grey-dark);
 
@@ -35,6 +36,7 @@
   --background: var(--white);
   --title-text-color: var(--navy);
   --body-text-color: var(--grey-dark);
+  --body-text-color-hover: var(--copper);
   --primary-color: var(--blue);
   --border-color: var(--grey-light);
 }
