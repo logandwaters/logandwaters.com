@@ -12,7 +12,22 @@ import Footer from "../components/Footer.astro";
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="The personal website of Logan Waters.">
+
   <title>Logan Waters</title>
+
+  <script>
+    const trigger = document.getElementById("encryption-trigger");
+    const continuation = document.getElementById("encryption-continuation");
+
+    if (!trigger || !continuation) {
+      throw new Error("Encryption disclosure elements not found.");
+    }
+
+    trigger.addEventListener("click", () => {
+      continuation.hidden = !continuation.hidden;
+      trigger.setAttribute("aria-expanded", String(!continuation.hidden));
+    });
+  </script>
 </head>
 
 <body>
@@ -56,7 +71,7 @@ import Footer from "../components/Footer.astro";
           <h3>Building</h3>
           <p>
             Building <a href="https://toolgek.com/">Toolgek</a>, a static platform of simple, fast, browser-based developer utilities.
-            It's built with <a href="https://astro.build/">Astro</a> and powered by a collection of internally developed open-source JavaScript tool packages.
+            It's built with Astro and powered by a collection of internally developed open-source JavaScript tool packages.
           </p>
         </div>
 
@@ -222,21 +237,34 @@ import Footer from "../components/Footer.astro";
 
       <div class="list">
         <p class="body-copy">
-          If you want to talk about a project, something I've built, or just say hello, my inbox is open.
+          Have a question, want to discuss a project, or just get in touch? You can reach me by email or find me on GitHub.
         </p>
+
         <div>
           <h3>Email</h3>
-          <p>Send me an email at <a href="mailto:me@logandwaters.com">me@logandwaters.com</a> anytime.</p>
+          <p>The best way to reach me is by email at <a class="interact" href="mailto:me@logandwaters.com">me@logandwaters.com</a>.</p>
+          <p class="meta-text">
+            <button id="encryption-trigger" class="trigger" type="button" aria-expanded="false" aria-controls="encryption-continuation">Prefer encrypted communication?</button>
+            <span id="encryption-continuation" hidden> You can use my OpenPGP public key to send me an end-to-end encrypted email. <a
+              class="link"
+              style="text-decoration: none;"
+              href="/pgp-keys/logandwaters-b13152902a3c0c3a2fafd8e355798c3849fa7f0c.asc"
+              title="Download my OpenPGP public key"
+              download
+            >[ Download OpenPGP Public Key ]</a></span>
+          </p>
         </div>
 
         <div>
-          <h3>Github</h3>
-          <p>You can also learn more about my projects at <a href="https://github.com/logandwaters" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
-        </div>
-
-        <div>
-          <h3>Social</h3>
-          <p>Im not on social media, if you would like to connect send me an email!</p>
+          <h3>GitHub</h3>
+          <p>
+            Explore what I'm working on, browse my repositories, or join a discussion on <a
+            class="link"
+            href="https://github.com/logandwaters" 
+            target="_blank" 
+            rel="noopener noreferrer"
+          >GitHub</a>.
+          </p>
         </div>
       </div>
     </section>

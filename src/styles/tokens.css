@@ -7,6 +7,7 @@
   --grey-light: #8ea1b8;
   --grey-dark: #1c2d43;
   --copper: #d1793b;
+  --copper-dark: #b34d05;
   --blue: #3b9cff;
   --blue-bright: #60b5ff;
 
@@ -18,11 +19,17 @@
   --body-text-color-hover: var(--blue-bright);
   --primary-color: var(--copper);
   --border-color: var(--grey-dark);
+  --link-color: var(--copper);
+  --link-color-visited: var(--copper-dark);
+  --interact-color: var(--blue-bright);
+  --interact-color-hover: var(--blue);
 
   /* Typography */
   --font-family-title: "IBM Plex Sans", sans-serif;
   --font-family-body: "Raleway";
   --font-family-meta: "JetBrains Mono", monospace;
+
+  --font-size-meta: 0.82rem;
 
   /* Layout and motion */
   --max-width: 920px;
@@ -39,4 +46,8 @@
   --body-text-color-hover: var(--copper);
   --primary-color: var(--blue);
   --border-color: var(--grey-light);
+  --link-color: var(--blue);
+  --link-color-visited: var(--blue-light);
+  --interact-color: var(--copper);
+  --interact-color-hover: var(--interact-color-hover);
 }
