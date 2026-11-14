@@ -12,6 +12,7 @@ html {
 }
 
 body {
+  --site-width: min(calc(100% - 40px), var(--max-width));
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -25,7 +26,7 @@ body {
 
 .site {
   flex: 1 0 auto;
-  width: min(calc(100% - 40px), var(--max-width));
+  width: var(--site-width);
   margin: 0 auto;
 }
 

@@ -1,6 +1,5 @@
 :root {
 /* Primitives */
-
   --navy: #08111f;
   --white: #e8f0fb;
   --creme: #f4f0ea;
@@ -12,7 +11,6 @@
   --blue-bright: #60b5ff;
 
 /* Default Dark Theme */
-
   --background: var(--navy);
   --title-text-color: var(--white);
   --body-text-color: var(--grey-light);
@@ -31,14 +29,24 @@
 
   --font-size-meta: 0.82rem;
 
+  --line-height-body: 1.7;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 0.75rem;
+  --space-lg: 1rem;
+  --space-xl: 1.5rem;
+  --space-2xl: 2rem;
+  --space-3xl: 3rem;
+  --space-4xl: 4rem;
+
   /* Layout and motion */
   --max-width: 920px;
-  --line-height-body: 1.7;
   --transition-fast: 160ms ease;
 }
 
 /* Accessible Light Theme */
-
 [data-theme="light"] {
   --background: var(--white);
   --title-text-color: var(--navy);
@@ -47,7 +55,7 @@
   --primary-color: var(--blue);
   --border-color: var(--grey-light);
   --link-color: var(--blue);
-  --link-color-visited: var(--blue-light);
+  --link-color-visited: var(--blue-bright);
   --interact-color: var(--copper);
   --interact-color-hover: var(--interact-color-hover);
 }
