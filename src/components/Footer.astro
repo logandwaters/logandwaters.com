@@ -1,30 +1,67 @@
+---
+import Wave from "./Wave.astro";
+
+const currentYear = new Date().getFullYear();
+---
+
 <footer class="site-footer">
-  <iframe class="footer-wave" src="/assets/art/wave-ascii-art.html" title="ASCII art wave"></iframe><iframe class="footer-wave" src="/assets/art/wave-ascii-art.html" title="ASCII art wave"></iframe>
+  <div class="footer-content">
+    <p>Logan Waters &copy; {currentYear}</p>
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="mailto:me@logandwaters.com">Email</a>
+      <span aria-hidden="true">·</span>
+      <a href="https://github.com/logandwaters/logandwaters.com">Source</a>
+      <span aria-hidden="true">·</span>
+      <a href="#attribution">Attribution</a>
+    </nav>
+  </div>
+  <div class="footer-waves" aria-hidden="true">
+    <Wave />
+    <Wave />
+  </div>
 </footer>
 
 <style>
   .site-footer {
-    display: flex;
     width: 100%;
     margin-top: auto;
   }
 
-  .footer-wave {
-    display: block;
-    flex: 0 0 50%;
-    width: 50%;
-    aspect-ratio: 5.75 / 1;
-    border: 0;
+  .footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    width: min(calc(100% - 40px), var(--max-width));
+    margin: 0 auto;
+    padding: 24px 0 48px;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.88rem;
   }
 
-  @media (max-width: 820px) {
-    .footer-wave:first-child {
-      flex-basis: 100%;
-      width: 100%;
-    }
+  .footer-links {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
 
-    .footer-wave + .footer-wave {
-      display: none;
+  .footer-links a {
+    color: var(--body-text-color);
+    text-decoration: none;
+  }
+
+  .footer-links a:hover {
+    color: var(--body-text-color-hover);
+  }
+
+  .footer-waves {
+    display: flex;
+    overflow: hidden;
+  }
+
+  @media (max-width: 700px) {
+    .footer-content {
+      width: min(calc(100% - 28px), var(--max-width));
     }
   }
 </style>
