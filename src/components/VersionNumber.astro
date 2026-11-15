@@ -1,5 +1,30 @@
 ---
 const version = process.env.SITE_VERSION;
+const type = process.env.SITE_VERSION_TYPE ?? "release";
+
+if (version && type !== "release" && type !== "commit") {
+  throw new Error(`Unsupported SITE_VERSION_TYPE: ${type}`);
+}
+
+const ref = type === "commit" ? (process.env.SITE_VERSION_REF ?? version) : version;
+const path = type === "commit" ? "commit" : "releases/tag";
+const url = ref && `https://github.com/logandwaters/logandwaters.com/${path}/${encodeURIComponent(ref)}`;
 ---
 
-{version && <p>{version}</p>}
+{version && (
+  <>
+    <span aria-hidden="true">·</span>
+    <a href={url} title={`View ${type} on GitHub`}>{version}</a>
+  </>
+)}
+
+<style>
+  a {
+    color: var(--body-text-color);
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: var(--body-text-color-hover);
+  }
+</style>
