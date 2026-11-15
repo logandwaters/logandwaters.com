@@ -1,5 +1,6 @@
 ---
 import Wave from "./Wave.astro";
+import VersionNumber from "./VersionNumber.astro";
 
 const currentYear = new Date().getFullYear();
 ---
@@ -11,6 +12,8 @@ const currentYear = new Date().getFullYear();
       <a href="https://github.com/logandwaters/logandwaters.com" title="View Site Source">Source</a>
       <span aria-hidden="true">·</span>
       <a href="/attribution" title="View Site Attribution">Attribution</a>
+      {process.env.SITE_VERSION && <span aria-hidden="true">·</span>}
+      <VersionNumber />
     </nav>
   </div>
   <div class="footer-waves" aria-hidden="true">

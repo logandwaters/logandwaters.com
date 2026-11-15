@@ -15,4 +15,22 @@ npm run dev
 npm run build
 ```
 
-The static site is generated in `dist/`. Run `npm run preview` to preview the production build locally.
+The static site is generated in `dist/`. Serve it locally to preview the production build:
+
+```sh
+npm run build
+npm run preview
+```
+
+Open the URL printed by Astro (normally `http://localhost:4321/`). Opening `dist/index.html` directly as a file does not serve the site's root-relative assets correctly.
+
+Deployments display the release tag for published releases, or the first six characters of the checked-out commit for manually dispatched workflows. Local builds omit the version unless `SITE_VERSION` is set.
+
+For example, in PowerShell:
+
+```powershell
+$env:SITE_VERSION = "v1.2.3"
+npm run build
+Remove-Item Env:SITE_VERSION
+npm run preview
+```

@@ -18,6 +18,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'release' && github.event.release.tag_name || github.sha }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -29,7 +31,21 @@ jobs:
         run: npm ci
 
       - name: Build static site
-        run: npm run build
+        env:
+          DEPLOY_EVENT: ${{ github.event_name }}
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: |
+          if [ "$DEPLOY_EVENT" = "release" ]; then
+            : "${RELEASE_TAG:?Release tag is required}"
+            export SITE_VERSION="$RELEASE_TAG"
+          elif [ "$DEPLOY_EVENT" = "workflow_dispatch" ]; then
+            COMMIT_SHA="$(git rev-parse HEAD)"
+            export SITE_VERSION="${COMMIT_SHA:0:6}"
+          else
+            echo "Unsupported deployment event: $DEPLOY_EVENT" >&2
+            exit 1
+          fi
+          npm run build
 
       - name: Install rsync
         run: sudo apt-get update && sudo apt-get install -y rsync
