@@ -294,13 +294,15 @@ p {
   color: var(--title-text-color);
 }
 
+@media (max-width: 767px) {
+  .intro {
+    padding: 48px 0 65px;
+  }
+}
+
 @media (max-width: 700px) {
   body {
     --site-width: min(calc(100% - 28px), var(--max-width));
-  }
-
-  .intro {
-    padding: 78px 0 65px;
   }
 
   .section {
