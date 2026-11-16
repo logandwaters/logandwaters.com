@@ -20,10 +20,12 @@
 
 .link:link {
   color: var(--link-color);
+  text-decoration: none;
 }
 
 .link:hover {
   color: var(--link-color);
+  text-decoration: underline;
 }
 
 .link:visited {
@@ -78,7 +80,7 @@ h1 {
   font-size: clamp(2.4rem, 6.5vw, 4.25rem);
   font-family: var(--font-family-title);
   line-height: 1.06;
-  letter-spacing: -0.055em;
+  letter-spacing: -0.01em;
 }
 
 .lead {
@@ -112,7 +114,7 @@ h2 {
   margin: 0;
   font-size: 1.4rem;
   font-family: var(--font-family-title);
-  letter-spacing: -0.025em;
+  letter-spacing: -0.01em;
 }
 
 h3 {
@@ -140,14 +142,6 @@ p {
 
 .body-copy + .body-copy {
   margin-top: 18px;
-}
-
-.project-list {
-  border-top: 1px solid var(--border-color);
-}
-
-.project {
-  border-bottom: 1px solid var(--border-color);
 }
 
 .project summary {
@@ -196,27 +190,29 @@ p {
 }
 
 .arrow {
+  width: 24px;
+  height: 24px;
   flex: 0 0 auto;
-  color: var(--body-text-color);
-  font-size: 1.15rem;
-  line-height: 1;
-  transition:
-    color var(--transition-fast),
-    transform var(--transition-fast);
+  background-color: var(--body-text-color);
+  -webkit-mask: url("/assets/icons/arrows-out.svg") center / contain no-repeat;
+  mask: url("/assets/icons/arrows-out.svg") center / contain no-repeat;
+  transition: background-color var(--transition-fast);
 }
 
 .project summary:hover .arrow {
-  color: var(--blue-bright);
+  background-color: var(--blue-bright);
 }
 
 .project[open] .arrow {
-  transform: rotate(45deg);
-  color: var(--blue-bright);
+  -webkit-mask-image: url("/assets/icons/arrows-in.svg");
+  mask-image: url("/assets/icons/arrows-in.svg");
+  background-color: var(--blue-bright);
 }
 
 .project-details {
   max-width: 680px;
-  padding: 0 8px 22px;
+  padding: 22px;
+  border-top: 1px solid var(--border-color);
 }
 
 .project-details p {
@@ -230,11 +226,6 @@ p {
   display: inline-block;
   color: var(--blue-bright);
   font-size: 0.91rem;
-  text-decoration: none;
-}
-
-.project-details a:hover {
-  text-decoration: underline;
 }
 
 .badge-groups {

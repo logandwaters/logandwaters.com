@@ -4,6 +4,7 @@ import "../styles/pages.css";
 import Silhouette from "../components/text-art/Silhouette.astro";
 import Header from "../components/site/Header.astro";
 import Footer from "../components/site/Footer.astro";
+import Line from "../components/text-art/BinaryLine.astro"
 ---
 
 <!doctype html>
@@ -46,7 +47,7 @@ import Footer from "../components/site/Footer.astro";
             I learn by doing, figure things out through experience, and enjoy building simple, user-centric tools & systems.
           </p>
           <p class="lead">
-            Welcome to my corner of the internet, where I share meaningful projects, things I'm working on, and whatever else seems worth sharing.
+            I'm focusing on building high-performance static-first web apps & sites. On the side, I'm constantly diving farther into infrastructure and various other side interests.
           </p>
         </div>
       </div>
@@ -95,7 +96,7 @@ import Footer from "../components/site/Footer.astro";
     <section class="section" id="projects" aria-labelledby="projects-title">
       <div class="section-heading">
         <p class="eyebrow">2.0</p>
-        <h2 id="projects-title">Things I've Built</h2>
+        <h2 id="projects-title">Things I'm building</h2>
       </div>
     
       <div class="project-list">
@@ -106,7 +107,7 @@ import Footer from "../components/site/Footer.astro";
               <h3>Toolgek</h3>
               <p>Developer and utility tools, built around a manifest-driven architecture.</p>
             </div>
-            <span class="arrow" aria-hidden="true">+</span>
+            <span class="arrow" aria-hidden="true"></span>
           </summary>
     
           <div class="project-details">
@@ -114,11 +115,11 @@ import Footer from "../components/site/Footer.astro";
               A collection of small developer and utility tools designed to be
               simple to use and easy to extend.
             </p>
-            <a href="https://toolgek.com" target="_blank" rel="noopener">
-              toolgek.com ↗
-            </a>
+            <a class="link" href="https://toolgek.com" target="_blank" rel="noopener">toolgek.com</a>
           </div>
         </details>
+
+        <Line />
     
         <details class="project">
           <summary>
@@ -126,7 +127,7 @@ import Footer from "../components/site/Footer.astro";
               <h3>Homelab</h3>
               <p>Self-hosted services, servers, networking, Docker, and generally learning by breaking things.</p>
             </div>
-            <span class="arrow" aria-hidden="true">+</span>
+            <span class="arrow" aria-hidden="true"></span>
           </summary>
     
           <div class="project-details">
@@ -134,11 +135,13 @@ import Footer from "../components/site/Footer.astro";
               My ongoing collection of self-hosted services, infrastructure,
               networking experiments, and various things running in containers.
             </p>
-            <a href="https://serveratlas.online" target="_blank" rel="noopener">
+            <a class="link" href="https://serveratlas.online" target="_blank" rel="noopener">
               serveratlas.online ↗
             </a>
           </div>
         </details>
+
+        <Line />
     
         <details class="project">
           <summary>
@@ -146,7 +149,7 @@ import Footer from "../components/site/Footer.astro";
               <h3>Freelance web design</h3>
               <p>Websites and design work for small businesses, now done under my own name.</p>
             </div>
-            <span class="arrow" aria-hidden="true">+</span>
+            <span class="arrow" aria-hidden="true"></span>
           </summary>
     
           <div class="project-details">
