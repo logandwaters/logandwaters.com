@@ -1,0 +1,36 @@
+---
+// Obfuscation (not encryption): the address is only assembled in the browser.
+// Avoid passing the full address as `label`, since that would put it in the HTML.
+interface Props {
+  user: string;
+  domain: string;
+  label?: string;
+  class?: string;
+  // Content passed in the default slot (e.g. an icon) is kept as-is, like `label`.
+  [attr: string]: unknown;
+}
+
+const { user, domain, label, class: className, ...attrs } = Astro.props;
+const hasSlot = Astro.slots.has("default");
+---
+
+<a
+  {...attrs}
+  class:list={["obfuscated-email", className]}
+  data-email-user={user}
+  data-email-domain={domain}
+  data-email-label={label || hasSlot ? "" : undefined}
+>{hasSlot ? <slot /> : (label ?? "Email unavailable without JavaScript")}</a>
+
+<script>
+  document.querySelectorAll<HTMLAnchorElement>("a[data-email-user]").forEach((link) => {
+    const { emailUser, emailDomain } = link.dataset;
+    if (!emailUser || !emailDomain) return;
+
+    const address = `${emailUser}@${emailDomain}`;
+    link.href = `mailto:${address}`;
+    if (link.dataset.emailLabel === undefined) {
+      link.textContent = address;
+    }
+  });
+</script>

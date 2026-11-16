@@ -1,6 +1,7 @@
 ---
 import ThemeSwitcher from "./ThemeSwitcher.astro";
 import Navigation from "./Navigation.astro";
+import EmailLink from "./EmailLink.astro";
 ---
 
 <header class="site-header">
@@ -20,9 +21,9 @@ import Navigation from "./Navigation.astro";
         <span class="social-icon social-icon--github" aria-hidden="true"></span>
       </a>
 
-      <a href="mailto:me@logandwaters.com" aria-label="Email" title="Send me an email">
+      <EmailLink user="me" domain="logandwaters.com" aria-label="Email" title="Send me an email">
         <span class="social-icon social-icon--email" aria-hidden="true"></span>
-      </a>
+      </EmailLink>
     </div>
   </div>
 </header>
@@ -78,13 +79,13 @@ import Navigation from "./Navigation.astro";
     border-left: 1px solid var(--border-color);
   }
 
-  .icon-links a {
+  .icon-links :global(a) {
     display: flex;
     color: var(--body-text-color);
     transition: color var(--transition-fast), transform var(--transition-fast);
   }
 
-  .icon-links a:hover {
+  .icon-links :global(a):hover {
     color: var(--body-text-color-hover);
     transform: translateY(-1px);
   }
