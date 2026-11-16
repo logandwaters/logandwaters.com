@@ -1,0 +1,55 @@
+<figure class="binary-border" role="img" aria-label="Binary border decoration">
+  <pre class="binary-line" is:raw>01001001011001100010000001111001011011110111010100100000011001100110111101110101011011100110010000100000011101000110100001101001011100110010000001111001011011110111010100100000011000010111001001100101001000000110000101110111011001010111001101101111</pre>
+</figure>
+
+<script>
+  const borders = document.querySelectorAll<HTMLElement>(".binary-border");
+
+  const fitLine = (border: HTMLElement) => {
+    const line = border.querySelector<HTMLElement>(".binary-line");
+    const width = border.getBoundingClientRect().width;
+    if (!line || width === 0) return;
+
+    const availableWidth = Math.max(0, width - 2);
+    line.style.transform = "";
+    line.style.fontSize = "10px";
+    const lineWidth = line.getBoundingClientRect().width;
+    if (lineWidth > 0) {
+      line.style.fontSize = `${10 * availableWidth / lineWidth}px`;
+      const fittedWidth = line.getBoundingClientRect().width;
+      if (fittedWidth > availableWidth) {
+        line.style.transform = `scaleX(${availableWidth / fittedWidth})`;
+      }
+    }
+  };
+
+  const observer = new ResizeObserver((entries) => {
+    for (const entry of entries) {
+      if (entry.target instanceof HTMLElement) fitLine(entry.target);
+    }
+  });
+
+  borders.forEach((border) => observer.observe(border));
+  document.fonts.ready.then(() => borders.forEach(fitLine));
+</script>
+
+<style>
+  .binary-border {
+    width: 100%;
+    margin: 0;
+    container-type: inline-size;
+    color: var(--primary-color);
+  }
+
+  .binary-line {
+    width: max-content;
+    margin: 0;
+    padding: 0;
+    color: inherit;
+    font-family: "JetBrains Mono", Consolas, monospace;
+    font-size: 0.67cqi;
+    line-height: 1.2;
+    transform-origin: left;
+    white-space: pre;
+  }
+</style>
