@@ -1,0 +1,44 @@
+---
+import "../styles/global.css";
+import "../styles/pages.css";
+import Header from "../components/site/Header.astro";
+import Footer from "../components/site/Footer.astro";
+import Line from "../components/text-art/BinaryLine.astro"
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The personal website of Logan Waters.">
+
+  <title>Attribution | Logan Waters</title>
+</head>
+
+<body>
+  <main class="site">
+
+    <Header />
+
+    <section class="section" id="currently" aria-labelledby="currently-title">
+      <div class="section-heading">
+        <p class="eyebrow">1.0</p>
+        <h2 id="currently-title">Currently</h2>
+      </div>
+
+      <div class="list">
+        <div>
+          <h3>Learning</h3>
+          <p>
+            Deepening my understanding of the core web stack, with a focus on building fast, responsive,
+            accessible, static-first websites using HTML, CSS, JavaScript, and <a class="link" href="https://astro.build/">Astro.</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</body>
+</html>
