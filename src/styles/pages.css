@@ -102,6 +102,12 @@ h1 {
   margin-bottom: 32px;
 }
 
+.section-heading-alt {
+  display: grid;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-2xl);
+}
+
 .section-number {
   align-self: center;
   color: var(--copper);
@@ -138,6 +144,29 @@ p {
   max-width: 720px;
   margin-top: 5px;
   color: var(--body-text-color);
+}
+
+.attribution-list {
+  gap: var(--space-xl);
+}
+
+.attribution-list > div {
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.attribution-list > div > p {
+  margin-top: 0;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.list-item p {
+  margin-top: 0;
 }
 
 .body-copy + .body-copy {

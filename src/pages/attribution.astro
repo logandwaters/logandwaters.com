@@ -21,19 +21,74 @@ import Line from "../components/text-art/BinaryLine.astro"
 
     <Header />
 
-    <section class="section" id="currently" aria-labelledby="currently-title">
-      <div class="section-heading">
-        <p class="eyebrow">1.0</p>
-        <h2 id="currently-title">Currently</h2>
+    <section class="section" style="border: none;">
+      <div class="section-heading-alt">
+        <h1>Attribution</h1>
+        <p>My work is made possible by the many creators and open-source communities whose work helps power the open web.</p>
+        <Line />
       </div>
 
-      <div class="list">
+      <div class="list attribution-list">
         <div>
-          <h3>Learning</h3>
-          <p>
-            Deepening my understanding of the core web stack, with a focus on building fast, responsive,
-            accessible, static-first websites using HTML, CSS, JavaScript, and <a class="link" href="https://astro.build/">Astro.</a>
+          <h2>Framework</h2>
+          <p>This site was built with <a class="link" href="https://astro.build/" title="Visit site" target="_blank" rel="noopener">Astro</a>, an open-source web framework.
+            It uses Astro’s build-time static rendering to generate fast, lightweight pages.
           </p>
+        </div>
+
+        <div>
+          <h2>Assets</h2>
+
+          <div class="list-item">
+            <p>ASCII Artwork:</p>
+            <a class="link" href="https://jasperbernaers.com/image-to-ascii/" title="Visit site" target="_blank" rel="noopener"
+            >Jasper Bernaers' Image to ASCII Tool</a>
+          </div>
+
+          <div class="list-item">
+            <p>Tech Stack Badges:</p>
+            <a class="link" href="https://shields.io/" title="Visit site" target="_blank" rel="noopener"
+            >Shields.io</a>
+          </div>
+
+          <div class="list-item">
+            <p>Site Icons:</p>
+            <a class="link" href="https://phosphoricons.com/" title="Visit site" target="_blank" rel="noopener"
+            >Phosphor Icons</a>
+          </div>
+        </div>
+
+        <div>
+          <h2>Fonts</h2>
+
+          <div class="list-item">
+            <p>Titles are written in the <a class="link" style="font-family: var(--font-family-title);" href="https://www.ibm.com/plex/" title="Visit site" target="_blank" rel="noopener"
+              >IBM Plex&reg;
+              </a> typeface.
+            </p>
+          </div>
+
+          <div class="list-item">
+            <p>Body copy is written in the <a class="link" style="font-family: var(--font-family-body);" href="https://www.theleagueofmoveabletype.com/raleway" title="Visit site" target="_blank" rel="noopener"
+              >Raleway
+              </a> typeface.
+            </p>
+          </div>
+
+          <div class="list-item">
+            <p>Meta text is written in the <a class="link" style="font-family: var(--font-family-meta);" href="https://www.jetbrains.com/lp/mono/" title="Visit site" target="_blank" rel="noopener"
+              >JetBrains Mono
+              </a> typeface.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <h2>License</h2>
+          <p>The source code for this website is publicly available for viewing and educational reference.
+            No license is granted for copying, modifying, redistributing, or using the source code or website design as a separate project.
+          </p>
+          <p><strong>© 2026 Logan Waters. All rights reserved.</strong></p>
         </div>
       </div>
     </section>
