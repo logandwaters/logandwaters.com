@@ -1,4 +1,4 @@
-![Header](public/assets/brand/readme-header.svg)
+![Header](public/assets/brand/readme-header.png)
 
 # The Personal Site of Logan Waters
 
