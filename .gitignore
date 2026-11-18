@@ -1,4 +1,11 @@
+# Git Ignore for logandwaters.com
+
+# Development
 /dev
-node_modules/
+
+# Build Output
 dist/
+
+# Dependencies
 .astro/
+node_modules/
