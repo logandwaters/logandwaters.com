@@ -1,5 +1,6 @@
 ---
 const version = process.env.SITE_VERSION;
+const displayVersion = version || "dev-preview";
 const type = process.env.SITE_VERSION_TYPE ?? "release";
 
 if (version && type !== "release" && type !== "commit") {
@@ -11,10 +12,14 @@ const path = type === "commit" ? "commit" : "releases/tag";
 const url = ref && `https://github.com/logandwaters/logandwaters.com/${path}/${encodeURIComponent(ref)}`;
 ---
 
-{version && (
+{(
   <>
     <span aria-hidden="true">·</span>
-    <a href={url} title={`View ${type} on GitHub`}>{version}</a>
+    {version ? (
+      <a href={url} title={`View ${type} on GitHub`}>{version}</a>
+    ) : (
+      <span>{displayVersion}</span>
+    )}
   </>
 )}
 
