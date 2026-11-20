@@ -4,6 +4,17 @@ import "../styles/pages.css";
 import Header from "../components/site/Header.astro";
 import Footer from "../components/site/Footer.astro";
 import Line from "../components/text-art/BinaryLine.astro"
+
+const title = "Attribution | Logan Waters";
+const description = "Credits for the open-source tools, artwork, icons, and fonts used on Logan Waters' website.";
+const siteUrl = Astro.site;
+
+if (!siteUrl) {
+  throw new Error("Astro site URL must be configured for canonical metadata.");
+}
+
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
+const socialImageUrl = new URL("/android-chrome-512x512.png", siteUrl).href;
 ---
 
 <!doctype html>
@@ -11,14 +22,30 @@ import Line from "../components/text-art/BinaryLine.astro"
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="The personal website of Logan Waters.">
+  <meta name="description" content={description}>
 
-  <title>Attribution | Logan Waters</title>
+  <title>{title}</title>
+  <link rel="canonical" href={canonicalUrl}>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Logan Waters">
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:url" content={canonicalUrl}>
+  <meta property="og:image" content={socialImageUrl}>
+  <meta property="og:image:alt" content="Logan Waters monogram">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content={title}>
+  <meta name="twitter:description" content={description}>
+  <meta name="twitter:image" content={socialImageUrl}>
+  <meta name="twitter:image:alt" content="Logan Waters monogram">
+
+  <link rel="sitemap" href="/sitemap-index.xml" />
 
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
+  <link rel="manifest" href="/manifest.webmanifest">
 </head>
 
 <body>
