@@ -20,6 +20,7 @@
 </nav>
 
 <style>
+  /* Menu toggle */
   .menu-toggle {
     display: none;
     padding: 0;
@@ -32,18 +33,19 @@
 
   .menu-toggle:hover {
     color: var(--body-text-color-hover);
-    transform: translateY(-1px);
+    transform: translateY(var(--hover-lift));
   }
 
   .menu-toggle:focus-visible {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 4px;
+    outline: var(--focus-outline-width) solid var(--primary-color);
+    outline-offset: var(--focus-outline-offset);
   }
 
+  /* Menu icon */
   .menu-icon {
     display: block;
-    width: 20px;
-    height: 20px;
+    width: var(--size-icon);
+    height: var(--size-icon);
     background-color: currentColor;
     mask: url("/assets/icons/list.svg") center / contain no-repeat;
   }
@@ -52,29 +54,31 @@
     mask-image: url("/assets/icons/x.svg");
   }
 
+  /* Desktop navigation links */
   .navigation-links {
     display: flex;
-    gap: 20px;
+    gap: var(--space-lg);
   }
 
   .navigation-links a {
     color: var(--body-text-color);
-    font-size: 0.88rem;
+    font-size: var(--font-size-navigation);
     text-decoration: none;
   }
 
   .navigation-links a:hover {
     color: var(--body-text-color-hover);
-    transform: translateY(-1px);
+    transform: translateY(var(--hover-lift));
   }
 
+  /* Collapsed mobile navigation */
   @media (max-width: 700px) {
     .menu-toggle {
       display: flex;
       align-items: center;
       justify-content: center;
       min-height: 1lh;
-      font-size: 0.88rem;
+      font-size: var(--font-size-navigation);
       line-height: var(--line-height-body);
     }
 
@@ -85,8 +89,11 @@
       display: flex;
       flex-direction: column;
       gap: 0;
-      width: min(280px, calc(100vw - 40px));
-      padding: 8px 20px;
+      width: min(
+        var(--size-navigation-menu),
+        calc(100vw - var(--space-site-gutter))
+      );
+      padding: var(--space-sm) var(--space-navigation-padding-inline);
       border: 1px solid var(--border-color);
       background: var(--background);
     }
@@ -96,7 +103,7 @@
     }
 
     .navigation-links a {
-      padding: 12px 0;
+      padding: var(--space-md) 0;
     }
 
     .navigation-links a + a {
@@ -104,6 +111,7 @@
     }
   }
 
+  /* Respect the user's motion preference */
   @media (prefers-reduced-motion: reduce) {
     .menu-toggle {
       transition: none;

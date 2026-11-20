@@ -22,6 +22,7 @@ const currentYear = new Date().getFullYear();
 </footer>
 
 <style>
+  /* Footer layout */
   .site-footer {
     width: 100%;
     margin-top: auto;
@@ -31,17 +32,21 @@ const currentYear = new Date().getFullYear();
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: min(calc(var(--site-width) * 1.25), calc(100vw - 40px));
+    width: min(
+      calc(var(--site-width) * 1.25),
+      calc(100vw - var(--space-site-gutter))
+    );
     margin: 0 auto;
     padding: var(--space-2xl) 0;
     border-top: 1px solid var(--border-color);
     font-size: var(--font-size-meta);
   }
 
+  /* Footer navigation */
   .footer-links {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: var(--space-md);
   }
 
   .footer-links a {
@@ -53,6 +58,7 @@ const currentYear = new Date().getFullYear();
     color: var(--body-text-color-hover);
   }
 
+  /* Decorative footer messages */
   .footer-messages {
     display: flex;
     overflow: hidden;

@@ -1,5 +1,6 @@
 @import "./tokens.css";
 
+/* Font faces */
 @font-face {
   font-family: "Raleway";
   font-style: normal;
@@ -63,16 +64,21 @@
   unicode-range: U+D, U+20-7E, U+A0-FF, U+102, U+131, U+152-153, U+2BC, U+2C6, U+2DA, U+2DC, U+300-301, U+303-304, U+308-309, U+323, U+2013-2014, U+2018-201A, U+201C-201E, U+2022, U+2026, U+2032-2033, U+2039-203A, U+2044, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFF;
 }
 
+/* Global reset */
 * {
   box-sizing: border-box;
 }
 
+/* Document layout */
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  --site-width: min(calc(100% - 40px), var(--max-width));
+  --site-width: min(
+    calc(100% - var(--space-site-gutter)),
+    var(--max-width)
+  );
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -84,13 +90,15 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Site container */
 .site {
   flex: 1 0 auto;
   width: var(--site-width);
   margin: 0 auto;
 }
 
+/* Utility icons */
 .icon {
-  height: 20px;
+  height: var(--size-icon);
   width: auto;
 }

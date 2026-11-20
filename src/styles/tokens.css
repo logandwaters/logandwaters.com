@@ -24,16 +24,29 @@
   --interact-color: var(--blue-bright);
   --interact-color-hover: var(--blue);
 
-  /* Typography */
+/* Typography */
   --font-family-title: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
   --font-family-body: "Raleway", "Helvetica Neue", Arial, sans-serif;
   --font-family-meta: "JetBrains Mono", Menlo, Consolas, "Liberation Mono", monospace;
 
+  --font-size-eyebrow: 0.85rem;
+  --font-size-lead: 1.1rem;
+  --font-size-section-heading: 1.4rem;
+  --font-size-subheading: 0.98rem;
+  --font-size-project: 0.91rem;
+  --font-size-display: clamp(2.4rem, 6.5vw, 4.25rem);
+  --font-size-navigation: 0.88rem;
   --font-size-meta: 0.82rem;
 
   --line-height-body: 1.7;
+  --line-height-display: 1.06;
+  --line-height-project-details: 1.6;
 
-  /* Spacing */
+  --letter-spacing-eyebrow: 0.08em;
+  --letter-spacing-heading: -0.01em;
+  --text-underline-offset: 0.15em;
+
+/* Spacing */
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
   --space-md: 0.75rem;
@@ -43,8 +56,25 @@
   --space-3xl: 3rem;
   --space-4xl: 4rem;
 
+/* Page-specific spacing exceptions */
+  --space-intro-top: 6.5625rem;
+  --space-intro-bottom: 5.625rem;
+
   /* Layout and motion */
-  --max-width: 920px;
+  --space-site-gutter: 2.5rem;
+  --size-arrow: 1.5rem;
+  --size-badge-height: 1.25rem;
+  --size-icon: 1.25rem;
+  --size-navigation-menu: 17.5rem;
+  --space-navigation-padding-inline: 1.25rem;
+  --focus-outline-width: 2px;
+  --focus-outline-offset: 0.25rem;
+  --hover-lift: -1px;
+  --measure-heading: 46.25rem;
+  --measure-lead: 40rem;
+  --measure-copy: 45rem;
+  --measure-project-details: 42.5rem;
+  --max-width: 57.5rem;
   --transition-fast: 160ms ease;
 }
 

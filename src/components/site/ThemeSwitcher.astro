@@ -12,6 +12,7 @@
 </button>
 
 <style>
+  /* Switcher control */
   .theme-switch {
     display: flex;
     align-items: center;
@@ -26,27 +27,28 @@
 
   .theme-switch:hover {
     color: var(--body-text-color-hover);
-    transform: translateY(-1px);
+    transform: translateY(var(--hover-lift));
   }
 
   .theme-switch:focus-visible {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 4px;
+    outline: var(--focus-outline-width) solid var(--primary-color);
+    outline-offset: var(--focus-outline-offset);
   }
 
+  /* Icon container and shared icon styling */
   .theme-switch-icons {
     position: relative;
     display: block;
-    width: 20px;
-    height: 20px;
+    width: var(--size-icon);
+    height: var(--size-icon);
   }
 
   .theme-icon {
     position: absolute;
     inset: 0;
     display: block;
-    width: 20px;
-    height: 20px;
+    width: var(--size-icon);
+    height: var(--size-icon);
     background-color: currentColor;
     mask-position: center;
     mask-repeat: no-repeat;
@@ -56,6 +58,7 @@
       transform 220ms ease;
   }
 
+  /* Theme-specific icon states */
   .theme-icon--moon {
     mask-image: url("/assets/icons/moon.svg");
   }
@@ -76,6 +79,7 @@
     transform: rotate(0) scale(1);
   }
 
+  /* Respect the user's motion preference */
   @media (prefers-reduced-motion: reduce) {
     .theme-switch,
     .theme-icon {
