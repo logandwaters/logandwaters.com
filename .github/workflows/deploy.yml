@@ -54,6 +54,10 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y rsync
 
       - name: Configure SSH
+        env:
+          VPS_HOST: ${{ vars.VPS_HOST }}
+          VPS_PORT: ${{ vars.VPS_PORT }}
+          VPS_SSH_KNOWN_HOSTS: ${{ secrets.VPS_SSH_KNOWN_HOSTS }}
         run: |
           mkdir -p ~/.ssh
           chmod 700 ~/.ssh
@@ -61,14 +65,27 @@ jobs:
           printf '%s\n' "${{ secrets.VPS_SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
 
-          ssh-keyscan -p "${{ vars.VPS_PORT }}" \
-            "${{ vars.VPS_HOST }}" >> ~/.ssh/known_hosts
+          : "${VPS_HOST:?VPS_HOST is required}"
+          : "${VPS_PORT:?VPS_PORT is required}"
+          : "${VPS_SSH_KNOWN_HOSTS:?VPS_SSH_KNOWN_HOSTS secret is required}"
+          printf '%s\n' "$VPS_SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+
+          if [ "$VPS_PORT" = "22" ]; then
+            KNOWN_HOST="$VPS_HOST"
+          else
+            KNOWN_HOST="[$VPS_HOST]:$VPS_PORT"
+          fi
+          if ! ssh-keygen -F "$KNOWN_HOST" -f ~/.ssh/known_hosts >/dev/null; then
+            echo "VPS_SSH_KNOWN_HOSTS has no key for $KNOWN_HOST" >&2
+            exit 1
+          fi
 
           chmod 644 ~/.ssh/known_hosts
 
       - name: Test SSH connection
         run: |
           ssh \
+            -o StrictHostKeyChecking=yes \
             -i ~/.ssh/deploy_key \
             -p "${{ vars.VPS_PORT }}" \
             "${{ vars.VPS_USER }}@${{ vars.VPS_HOST }}" \
@@ -77,7 +94,7 @@ jobs:
       - name: Deploy website
         run: |
           rsync -avz --delete \
-            -e "ssh -i ~/.ssh/deploy_key -p ${{ vars.VPS_PORT }}" \
+            -e "ssh -o StrictHostKeyChecking=yes -i ~/.ssh/deploy_key -p ${{ vars.VPS_PORT }}" \
             dist/ \
             "${{ vars.VPS_USER }}@${{ vars.VPS_HOST }}:${{ vars.VPS_TARGET }}"
 
