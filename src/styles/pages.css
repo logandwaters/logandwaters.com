@@ -20,7 +20,8 @@
 
 .link:link {
   color: var(--link-color);
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
 }
 
 .link:hover {
@@ -30,15 +31,23 @@
 
 .link:visited {
   color: var(--link-color-visited);
+  text-decoration: underline;
 }
 
 .interact:link {
   color: var(--interact-color);
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.interact:visited {
+  color: var(--interact-color);
+  text-decoration: underline;
 }
 
 .interact:hover {
   color: var(--interact-color-hover);
+  text-decoration: underline;
 }
 
 .meta-text {
@@ -211,7 +220,7 @@ p {
 }
 
 .project summary:hover h3 {
-  color: var(--blue-bright);
+  color: var(--body-text-color-hover);
 }
 
 .project summary:hover p {
@@ -229,13 +238,13 @@ p {
 }
 
 .project summary:hover .arrow {
-  background-color: var(--blue-bright);
+  background-color: var(--interact-color);
 }
 
 .project[open] .arrow {
   -webkit-mask-image: url("/assets/icons/arrows-in.svg");
   mask-image: url("/assets/icons/arrows-in.svg");
-  background-color: var(--blue-bright);
+  background-color: var(--interact-color);
 }
 
 .project-details {
@@ -253,8 +262,12 @@ p {
 
 .project-details a {
   display: inline-block;
-  color: var(--blue-bright);
+  color: var(--link-color);
   font-size: 0.91rem;
+}
+
+.project-details a:visited {
+  color: var(--link-color-visited);
 }
 
 .badge-groups {

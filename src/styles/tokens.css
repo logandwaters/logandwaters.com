@@ -9,6 +9,8 @@
   --copper-dark: #b34d05;
   --blue: #3b9cff;
   --blue-bright: #60b5ff;
+  --blue-dark: #005a9c;
+  --blue-darker: #004b83;
 
 /* Default Dark Theme */
   --background: var(--navy);
@@ -18,7 +20,7 @@
   --primary-color: var(--copper);
   --border-color: var(--grey-dark);
   --link-color: var(--copper);
-  --link-color-visited: var(--copper-dark);
+  --link-color-visited: var(--copper);
   --interact-color: var(--blue-bright);
   --interact-color-hover: var(--blue);
 
@@ -48,14 +50,14 @@
 
 /* Accessible Light Theme */
 [data-theme="light"] {
-  --background: var(--white);
+  --background: var(--creme);
   --title-text-color: var(--navy);
   --body-text-color: var(--grey-dark);
-  --body-text-color-hover: var(--copper);
-  --primary-color: var(--blue);
+  --body-text-color-hover: var(--copper-dark);
+  --primary-color: var(--blue-dark);
   --border-color: var(--grey-light);
-  --link-color: var(--blue);
-  --link-color-visited: var(--blue-bright);
-  --interact-color: var(--copper);
-  --interact-color-hover: var(--interact-color-hover);
+  --link-color: var(--blue-dark);
+  --link-color-visited: var(--blue-darker);
+  --interact-color: var(--copper-dark);
+  --interact-color-hover: var(--copper-dark);
 }
