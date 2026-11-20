@@ -41,9 +41,7 @@ export default function health() {
         const output = new Set(files);
         const missingPages = REQUIRED_PAGES.filter((page) => {
           const route = page.replace(/^\/|\/$/g, "");
-          return route
-            ? !output.has(`${route}.html`) && !output.has(`${route}/index.html`)
-            : !output.has("index.html");
+          return !output.has(route ? `${route}/index.html` : "index.html");
         });
         const missingAssets = REQUIRED_ASSETS.filter((asset) => !output.has(asset.slice(1)));
         const healthy = missingPages.length === 0 && missingAssets.length === 0;

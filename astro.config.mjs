@@ -8,7 +8,7 @@ export default defineConfig({
   integrations: [health()],
 
   build: {
-    format: "file",
+    format: "directory",
   },
 
   markdown: {
