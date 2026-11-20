@@ -23,9 +23,9 @@
   --interact-color-hover: var(--blue);
 
   /* Typography */
-  --font-family-title: "IBM Plex Sans", sans-serif;
-  --font-family-body: "Raleway";
-  --font-family-meta: "JetBrains Mono", monospace;
+  --font-family-title: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-family-body: "Raleway", "Helvetica Neue", Arial, sans-serif;
+  --font-family-meta: "JetBrains Mono", Menlo, Consolas, "Liberation Mono", monospace;
 
   --font-size-meta: 0.82rem;
 

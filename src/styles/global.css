@@ -1,7 +1,67 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
-
 @import "./tokens.css";
+
+@font-face {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/raleway/latin-ext-wght-normal.woff2") format("woff2");
+  unicode-range: U+0, U+D, U+20, U+41, U+A0, U+C1, U+100-130, U+132-151, U+154-17E, U+18F, U+192, U+1A0-1A1, U+1AF-1B0, U+1C4-1CC, U+1E6-1E7, U+1EA-1EB, U+1F1-1F5, U+1FA-21B, U+22A-22D, U+230-233, U+237, U+259, U+2B9-2BA, U+2BC, U+2BE-2BF, U+2C7-2CC, U+2DD, U+300-301, U+303-304, U+308-309, U+323, U+1E08-1E09, U+1E0C-1E0F, U+1E14-1E17, U+1E1C-1E1D, U+1E20-1E21, U+1E24-1E25, U+1E2A-1E2B, U+1E2E-1E2F, U+1E36-1E37, U+1E3A-1E3B, U+1E42-1E49, U+1E4C-1E53, U+1E5A-1E5B, U+1E5E-1E69, U+1E6C-1E6F, U+1E78-1E7B, U+1E80-1E85, U+1E8E-1E8F, U+1E92-1E93, U+1E97, U+1E9E, U+1EF2-1EF9, U+2020, U+20A1, U+20A3-20A4, U+20A6-20A7, U+20A9, U+20AB, U+20AD-20AE, U+20B1-20B2, U+20B4-20B5, U+20B8-20BA, U+20BC-20BD, U+2113, U+FFFF;
+}
+
+@font-face {
+  font-family: "Raleway";
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/raleway/latin-ext-wght-italic.woff2") format("woff2");
+  unicode-range: U+0, U+D, U+20, U+41, U+A0, U+C1, U+100-130, U+132-151, U+154-17E, U+18F, U+192, U+1A0-1A1, U+1AF-1B0, U+1C4-1CC, U+1E6-1E7, U+1EA-1EB, U+1F1-1F5, U+1FA-21B, U+22A-22D, U+232-233, U+237, U+259, U+2B9, U+2BC, U+2C7-2C9, U+2CC, U+2DD, U+300-301, U+303-304, U+308-309, U+323, U+1E08-1E09, U+1E0C-1E0F, U+1E14-1E17, U+1E1C-1E1D, U+1E20-1E21, U+1E24-1E25, U+1E2A-1E2B, U+1E2E-1E2F, U+1E36-1E37, U+1E3A-1E3B, U+1E42-1E49, U+1E4C-1E53, U+1E5A-1E5B, U+1E5E-1E5F, U+1E62-1E65, U+1E6C-1E6F, U+1E78-1E7B, U+1E80-1E85, U+1E92-1E93, U+1E97, U+1E9E, U+1EF2-1EF9, U+2020, U+20A1, U+20A3-20A4, U+20A6-20A7, U+20A9, U+20AB, U+20AD-20AE, U+20B1-20B2, U+20B4-20B5, U+20B8-20B9, U+20BC-20BD, U+2113, U+FFFF;
+}
+
+@font-face {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/raleway/latin-wght-normal.woff2") format("woff2");
+  unicode-range: U+0, U+D, U+20-7E, U+A0-FF, U+102, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+300-301, U+303-304, U+308-309, U+323, U+2002, U+2009, U+200B, U+2013-2014, U+2018-201A, U+201C-201E, U+2022, U+2026, U+2032-2033, U+2039-203A, U+2044, U+20AC, U+2122, U+2212, U+2215, U+FFFF;
+}
+
+@font-face {
+  font-family: "Raleway";
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/raleway/latin-wght-italic.woff2") format("woff2");
+  unicode-range: U+0, U+D, U+20-7E, U+A0-FF, U+102, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+300-301, U+303-304, U+308-309, U+323, U+2002, U+2009, U+200B, U+2013-2014, U+2018-201A, U+201C-201E, U+2022, U+2026, U+2032-2033, U+2039-203A, U+2044, U+20AC, U+2122, U+2212, U+2215, U+FFFF;
+}
+
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 100 700;
+  font-display: swap;
+  src: url("/fonts/ibm-plex-sans/latin-ext-standard-normal.woff2") format("woff2");
+  unicode-range: U+20, U+61-62, U+A0, U+100-130, U+132-151, U+154-17F, U+18F, U+192, U+1A0-1A1, U+1AF-1B0, U+1CD-1DC, U+1FA-1FF, U+218-21B, U+237, U+259, U+2BC, U+2C7, U+2DD, U+300-301, U+303-304, U+308-309, U+323, U+1E80-1E85, U+1E9E, U+1EF2-1EF9, U+2020, U+20A1, U+20A4, U+20A6, U+20A8-20AB, U+20AD-20AE, U+20B1-20B2, U+20B4-20B5, U+20B8-20BA, U+20BD, U+20BF, U+2113, U+FFFF;
+}
+
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 100 700;
+  font-display: swap;
+  src: url("/fonts/ibm-plex-sans/latin-standard-normal.woff2") format("woff2");
+  unicode-range: U+20-7E, U+A0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+300-301, U+303-304, U+308-309, U+323, U+2002, U+2009, U+200B, U+2013-2014, U+2018-201A, U+201C-201E, U+2022, U+2026, U+2032-2033, U+2039-203A, U+2044, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD, U+FFFF;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url("/fonts/jetbrains-mono/latin-wght-normal.woff2") format("woff2");
+  unicode-range: U+D, U+20-7E, U+A0-FF, U+102, U+131, U+152-153, U+2BC, U+2C6, U+2DA, U+2DC, U+300-301, U+303-304, U+308-309, U+323, U+2013-2014, U+2018-201A, U+201C-201E, U+2022, U+2026, U+2032-2033, U+2039-203A, U+2044, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFF;
+}
 
 * {
   box-sizing: border-box;
